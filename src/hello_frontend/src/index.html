@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> AK Trading </title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-image: url('https://your-image-url.com/background.jpg'); /* Add a cool background image */
+      background-size: cover;
+      background-attachment: fixed;
+      color: #333;
+    }
+
+    header {
+      background-color: rgba(0, 82, 204, 0.9); /* Add transparency for a cooler look */
+      color: white;
+      text-align: center;
+      padding: 1.5rem;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      font-size: 2rem;
+      letter-spacing: 1px;
+    }
+
+    .container {
+      display: flex;
+      justify-content: space-around;
+      padding: 20px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+      background-color: rgba(255, 255, 255, 0.8); /* Transparent container */
+      border-radius: 15px;
+    }
+
+    .watchlist, .trading-panel, .portfolio {
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      width: 30%;
+      transition: transform 0.3s ease;
+    }
+
+    .watchlist:hover, .trading-panel:hover, .portfolio:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .watchlist h2, .trading-panel h2, .portfolio h2 {
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 10px;
+      color: #0052cc;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 10px;
+      text-align: center;
+    }
+
+    th {
+      background-color: #0052cc;
+      color: white;
+    }
+
+    td {
+      background-color: #f9f9f9;
+    }
+
+    td.positive {
+      color: #28a745;
+      font-weight: bold;
+    }
+
+    td.negative {
+      color: #dc3545;
+      font-weight: bold;
+    }
+
+    .buy-btn, .sell-btn {
+      margin-top: 15px;
+      padding: 12px;
+      border-radius: 25px;
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      width: 100%;
+    }
+
+    .buy-btn {
+      background-color: #28a745;
+      border: none;
+    }
+
+    .buy-btn:hover {
+      background-color: #218838;
+    }
+
+    .sell-btn {
+      background-color: #dc3545;
+      border: none;
+    }
+
+    .sell-btn:hover {
+      background-color: #c82333;
+    }
+
+    input[type="text"], input[type="number"] {
+      width: 100%;
+      padding: 12px;
+      margin-top: 10px;
+      border-radius: 10px;
+      border: 1px solid #ddd;
+      outline: none;
+      transition: border-color 0.3s ease;
+    }
+
+    input[type="text"]:focus, input[type="number"]:focus {
+      border-color: #0052cc;
+    }
+
+    .portfolio-summary {
+      margin-top: 20px;
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+
+    .stock-img {
+      width: 30px;
+      height: 30px;
+      margin-right: 10px;
+      vertical-align: middle;
+    }
+
+    @media (max-width: 992px) {
+      .container {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .watchlist, .trading-panel, .portfolio {
+        width: 80%;
+        margin-bottom: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>AK Trading Platform</h1>
+    <h3>By Akash S S </h3>
+  </header>
+
+  <div class="container">
+
+    <!-- Stock Watchlist -->
+    <div class="watchlist">
+      <h2>Watchlist</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Stock</th>
+            <th>Price</th>
+            <th>Change</th>
+          </tr>
+        </thead>
+        <tbody id="watchlist">
+          <tr>
+            <td><img src="https://logo.clearbit.com/apple.com" alt="AAPL" class="stock-img">AAPL</td>
+            <td>$150.00</td>
+            <td class="positive">+1.23%</td>
+          </tr>
+          <tr>
+            <td><img src="https://logo.clearbit.com/google.com" alt="GOOGL" class="stock-img">GOOGL</td>
+            <td>$2,800.00</td>
+            <td class="negative">-0.56%</td>
+          </tr>
+          <tr>
+            <td><img src="https://logo.clearbit.com/tesla.com" alt="TSLA" class="stock-img">TSLA</td>
+            <td>$750.00</td>
+            <td class="positive">+2.34%</td>
+          </tr>
+          <!-- Additional stocks to make the list longer -->
+          <tr>
+            <td><img src="https://logo.clearbit.com/amazon.com" alt="AMZN" class="stock-img">AMZN</td>
+            <td>$3,400.00</td>
+            <td class="positive">+1.12%</td>
+          </tr>
+          <tr>
+            <td><img src="https://logo.clearbit.com/microsoft.com" alt="MSFT" class="stock-img">MSFT</td>
+            <td>$299.00</td>
+            <td class="negative">-1.45%</td>
+          </tr>
+          <tr>
+            <td><img src="https://logo.clearbit.com/netflix.com" alt="NFLX" class="stock-img">NFLX</td>
+            <td>$500.00</td>
+            <td class="positive">+0.85%</td>
+          </tr>
+          <!-- More stocks can be added similarly -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Trading Panel -->
+    <div class="trading-panel">
+      <h2>Trade Stock</h2>
+      <label for="stock">Stock Symbol:</label>
+      <input type="text" id="stock" placeholder="Enter Stock Symbol">
+      
+      <label for="quantity">Quantity:</label>
+      <input type="number" id="quantity" placeholder="Enter Quantity">
+      
+      <button class="buy-btn" onclick="tradeStock('buy')">Buy</button>
+      <button class="sell-btn" onclick="tradeStock('sell')">Sell</button>
+    </div>
+
+    <!-- Portfolio Summary -->
+    <div class="portfolio">
+      <h2>Portfolio</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Stock</th>
+            <th>Quantity</th>
+            <th>Value</th>
+          </tr>
+        </thead>
+        <tbody id="portfolio">
+          <tr>
+            <td><img src="https://logo.clearbit.com/apple.com" alt="AAPL" class="stock-img">AAPL</td>
+            <td>10</td>
+            <td>$1,500.00</td>
+          </tr>
+          <tr>
+            <td><img src="https://logo.clearbit.com/google.com" alt="GOOGL" class="stock-img">GOOGL</td>
+            <td>5</td>
+            <td>$14,000.00</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="portfolio-summary">
+        <strong>Total Value:</strong> $15,500.00
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    function tradeStock(action) {
+      const stock = document.getElementById('stock').value.toUpperCase();
+      const quantity = parseInt(document.getElementById('quantity').value);
+
+      if (!stock || !quantity || quantity <= 0) {
+        alert('Please enter a valid stock symbol and quantity.');
+        return;
+      }
+
+      let actionText = action === 'buy' ? 'bought' : 'sold';
+      alert(`Successfully ${actionText} ${quantity} shares of ${stock}`);
+    }
+  </script>
+
+</body>
+</html>
